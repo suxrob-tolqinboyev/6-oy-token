@@ -10,7 +10,7 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className=" flex justify-center">
+      <div className="flex justify-center ">
         <div className="flex items-center w-[1400px]  m-auto justify-between">
           <div className="">
             <img className="h-[40px]" src="./src/assets/icons/logo.svg" alt="" />
@@ -41,10 +41,12 @@ const Navbar = () => {
               <PiTruck className="text-[23px]" />
               <span>track</span>
             </li>
+            <NavLink to="/cart">
             <li className="flex flex-col items-center">
               <PiShoppingCartBold className="text-[23px]" />
               <span>Basket</span>
             </li>
+            </NavLink>
             <li className="flex flex-col items-center">
               <FaRegHeart className="text-[23px]" />
               <span>Featured</span>

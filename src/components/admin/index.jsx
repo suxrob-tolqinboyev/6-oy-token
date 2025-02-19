@@ -1,101 +1,140 @@
+// import axios from "axios";
+// import React from "react";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-// import axios from "axios";
-// import { useState , useEffect } from "react";
-
-// import React from "react";
 
 // const Admin = () => {
-//   const [ads, setAds] = useState([]);
+//   async function handleSubmit(e) {
+//     e.preventDefault();
+    
+//     const formData = new FormData(e.target);
+    
+//     try {
+//       const res = await axios.post("http://localhost:5000/products", formData, {
+//         headers: { "Content-Type": "multipart/form-data" },
+//       });
 
-//   useEffect(() => {
-//     async function handleSubmit(e) {
-//       e.preventDefault();
-//       const formData = new FormData(e.target);
+//       toast.success("Mahsulot muvaffaqiyatli qo‘shildi!");
+//       e.target.reset(); // Formani tozalash
 
-//       try {
-//         const res = await axios.post(
-//           "http://localhost:5000/products",
-//           formData
-//         );
-//         setAds(formData);
-//         console.log(formData);
-//       } catch (err) {
-//         console.log(err);
-//         toast.error(err?.response?.data?.message || "An error occurred");
-//       }
+//     } catch (error) {
+//       console.error("Xatolik yuz berdi:", error);
+//       toast.error("Xatolik yuz berdi! Qayta urinib ko‘ring.");
 //     }
-//     handleSubmit();
-//   }, []);
+//   }
 
 //   return (
-//     <div>
-//       <form className="" action="" method="">
-//         <input type="text" placeholder="name" name="name" />
-//         <input type="text" placeholder="category" name="category" />
-//         <input type="number" placeholder="price" name="price" />
-//         <input type="text" placeholder="description" name="description" />
-//         <input type="file" placeholder="image" name="image" />
-//         <input type="text" placeholder="name" name="name" />
-//         <input type="number" placeholder="stock" name="stock" />
-//         <input type="number" placeholder="rating" name="rating" />
+//     <div className=" w-[1400px] mx-auto  flex flex-col items-center">
+//       <h1 >Admin panel</h1>
+//       <form
+//         onSubmit={handleSubmit}
+//         className="flex flex-col w-[500px] gap-3 p-4 border rounded-lg shadow-lg "
+//       >
+//         <input className="p-2 border" type="text" placeholder="Name" name="name" required />
+//         <input className="p-2 border" type="text" placeholder="Category" name="category" required />
+//         <input className="p-2 border" type="number" placeholder="Price" name="price" required />
+//         <input className="p-2 border" type="text" placeholder="Description" name="description" required />
+//         <input className="p-2 border" type="file" name="image" required />
+//         <input className="p-2 border" type="number" placeholder="Stock" name="stock" required />
+//         <input className="p-2 border" type="number" placeholder="Rating" name="rating" required />
+//         <button className="p-2 text-white bg-blue-500 rounded hover:bg-blue-600">Add Product</button>
 //       </form>
+
+//       <ToastContainer position="top-right" autoClose={3000} />
 //     </div>
 //   );
 // };
 
 // export default Admin;
 
-
+import axios from "axios";
+import React, { useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
-import { useState } from "react";
-import React from "react";
+import { NameContext } from "../context";
 
 const Admin = () => {
-  const [ads, setAds] = useState([]);
-
-  // ✅ Form jo‘natish funksiyasi
+  const {token} = useContext(NameContext)
   async function handleSubmit(e) {
     e.preventDefault();
+
     const formData = new FormData(e.target);
 
     try {
-      const res = await axios.post("http://localhost:5000/products", formData);
-      
-      // ✅ Yangi qo‘shilgan ma'lumotni state ga qo‘shish
-      setAds([...ads, res.data]);
+      await axios.post("http://localhost:5000/products", formData, {
+        headers: { Authorization : "Bareer" + token},
+      });
 
       toast.success("Mahsulot muvaffaqiyatli qo‘shildi!");
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.response?.data?.message || "Xatolik yuz berdi!");
+      e.target.reset(); // Formani tozalash
+    } catch (error) {
+      console.error("Xatolik yuz berdi:", error);
+      toast.error("Xatolik yuz berdi! Qayta urinib ko‘ring.");
     }
   }
 
   return (
-    <div className="p-5">
-      <h2 className="text-2xl font-bold mb-4">Mahsulot Qo‘shish</h2>
+    <div className="flex items-center justify-center min-h-screen p-4 bg-gray-100">
+      <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
+        <h1 className="mb-4 text-2xl font-bold text-center text-gray-700">
+          Admin Panel
+        </h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <input
+            className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            placeholder="Name"
+            name="name"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            placeholder="Category"
+            name="category"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="number"
+            placeholder="Price"
+            name="price"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="text"
+            placeholder="Description"
+            name="description"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded cursor-pointer file:bg-blue-500 file:text-white file:border-none file:py-2 file:px-4 file:rounded"
+            type="file"
+            name="image"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="number"
+            placeholder="Stock"
+            name="stock"
+            required
+          />
+          <input
+            className="p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            type="number"
+            placeholder="Rating"
+            name="rating"
+            required
+          />
+          <button className="p-3 text-white transition bg-blue-500 rounded hover:bg-blue-600">
+            Add Product
+          </button>
+        </form>
 
-      {/* ✅ Formga `onSubmit` qo‘shildi */}
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-1/2">
-        <input type="text" placeholder="name" name="name" required className="border p-2" />
-        <input type="text" placeholder="category" name="category" required className="border p-2" />
-        <input type="number" placeholder="price" name="price" required className="border p-2" />
-        <input type="text" placeholder="description" name="description" className="border p-2" />
-        <input type="file" name="image" className="border p-2" />
-        <input type="number" placeholder="stock" name="stock" required className="border p-2" />
-        <input type="number" placeholder="rating" name="rating" required className="border p-2" />
-        
-        {/* ✅ Submit tugmasi qo‘shildi */}
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded mt-2">
-          Mahsulot Qo‘shish
-        </button>
-      </form>
-
-      {/* ToastContainer qo‘shildi */}
-      <ToastContainer />
+        <ToastContainer position="top-right" autoClose={3000} />
+      </div>
     </div>
   );
 };
