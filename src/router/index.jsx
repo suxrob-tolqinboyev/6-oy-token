@@ -6,6 +6,7 @@ import Logina from "../components/login/login.jsx";
 import Layout from "../components/layout/index.jsx";
 import Product from "../components/Product/index.jsx";
 import Cart from "../components/cartProduct/index.jsx";
+import About from "../pages/About/index.jsx";
 
 const Router = () => {
   return (

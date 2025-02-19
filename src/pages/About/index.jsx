@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div>
+    <div className="w-[1400px] mx-auto">
       Biz haqimizda Agar siz yirik biznes katta miqdordagi mablag 'sarflashdan
       boshlanadi deb o'ylasangiz, siz adashasiz. Buning yorqin misoli Asaxiydir
       . uz . O'ylab ko'ring, biz do'konimizni qancha pul evaziga ochdik? Ayni
