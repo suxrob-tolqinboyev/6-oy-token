@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { NameContext } from "../context";
 import { useNavigate } from "react-router-dom";
+import { FaRegEye } from "react-icons/fa6";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
     const { setToken } = useContext(NameContext);
     const navigate = useNavigate();
-
+    
     async function handleSubmit(e) {
         e.preventDefault();
         console.log("bosildi", e.target[0].value, e.target[1].value);
@@ -37,11 +39,21 @@ const Login = () => {
                         placeholder="Username"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400"
                     />
+                    <div className="flex">
                     <input
+                    //    ref={inputEye}
                         type="password"
                         placeholder="Password"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-400"
                     />
+                    <button type="button" onClick={() => {
+                        console.log("boliddddd")
+                        {(prev )}
+                    }
+                    }>
+                        
+                        </button>
+                    </div>
                     <button
                         className="w-full py-3 font-semibold text-white transition-all duration-300 bg-blue-500 rounded-lg hover:bg-blue-600"
                     >

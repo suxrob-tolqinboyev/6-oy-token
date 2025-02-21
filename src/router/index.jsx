@@ -7,6 +7,9 @@ import Layout from "../components/layout/index.jsx";
 import Cart from "../components/cartProduct/index.jsx";
 import About from "../pages/About/index.jsx";
 import Login from "../components/login/login.jsx";
+import Cards from "../components/cards/index.jsx";
+// import Product from "../components/Product/index.jsx";
+// import Product from "../components/Product/index.jsx";
 
 const Router = () => {
   return (
@@ -15,7 +18,9 @@ const Router = () => {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />}></Route>
           <Route path="/about" element={<About />}></Route>
-
+          <Route path="/cards" element={<Cards />}></Route>
+          {/* <Route path="/product" element={<Product />}></Route> */}
+          {/* <Route path="/product/:id" element={<Product />}></Route> */}
           <Route path="/cart" element={<Cart />}></Route>
         </Route>
         <Route path="/admin" element={<Admin />}></Route>
