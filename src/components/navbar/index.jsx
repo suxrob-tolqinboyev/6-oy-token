@@ -10,10 +10,14 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      <div className="flex justify-center ">
+      <div className="flex justify-center bg-white">
         <div className="flex items-center w-[1400px]  m-auto justify-between">
           <div className="">
-            <img className="h-[40px]" src="./src/assets/icons/logo.svg" alt="" />
+            <img
+              className="h-[40px]"
+              src="./src/assets/icons/logo.svg"
+              alt=""
+            />
           </div>
           <button className="text-red hover:before:bg-redborder-red-500 relative h-[50px] w-40 overflow-hidden border rounded-[10px] bg-[#006BFF] px-3  shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-blue-800 before:transition-all before:duration-500 text-white hover:before:left-0 hover:before:w-full">
             <span className="relative z-10">Categories</span>
@@ -42,10 +46,10 @@ const Navbar = () => {
               <span>track</span>
             </li>
             <NavLink to="/cart">
-            <li className="flex flex-col items-center">
-              <PiShoppingCartBold className="text-[23px]" />
-              <span>Basket</span>
-            </li>
+              <li className="flex flex-col items-center">
+                <PiShoppingCartBold className="text-[23px]" />
+                <span>Basket</span>
+              </li>
             </NavLink>
             <li className="flex flex-col items-center">
               <FaRegHeart className="text-[23px]" />
@@ -62,18 +66,20 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="w-[1400px] m-auto py-[15px]">
-        <ul className="flex justify-around">
-          <li className="">
-            <NavLink to="/">home</NavLink>
-          </li>
-          <li className="">
-            <NavLink to="/admin">Admin</NavLink>
-          </li>
-          <li className="">
-            <NavLink to="/about">About</NavLink>
-          </li>
-        </ul>
+      <div className="bg-white">
+        <div className="w-[1400px] m-auto py-[15px] ">
+          <ul className="flex justify-around">
+            <li className="">
+              <NavLink to="/">home</NavLink>
+            </li>
+            <li className="">
+              <NavLink to="/admin">Admin</NavLink>
+            </li>
+            <li className="">
+              <NavLink to="/about">About</NavLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );

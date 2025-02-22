@@ -2,9 +2,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-// import Navbar from "../components/Navbar";
-import Loading from "../components/Loading";
-// import Navbar from "../navbar";
 
 
 const Product = () => {
@@ -38,8 +35,7 @@ const Product = () => {
     //   <img src={product.image}  alt="" />
     // </div>
     <>
-   
-      {loading && <Loading />}
+
       {error && (
         <div
           className="flex items-center justify-center w-[500px] mx-auto mt-[100px] p-4 mb-4 text-sm text-red-700 bg-red-100 border border-red-400 rounded-lg"
@@ -115,3 +111,5 @@ const Product = () => {
 };
 
 export default Product;
+
+

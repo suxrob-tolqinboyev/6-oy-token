@@ -1,11 +1,14 @@
 import React from "react";
 import Router from "./router";
+// import { NameProvider } from "./components/context";
 
 // import "./i18n"
 
 const App = () => (
   <div className="m-auto">
-    <Router />
+    {/* <NameProvider> */}
+      <Router />
+    {/* </NameProvider> */}
   </div>
 );
 
